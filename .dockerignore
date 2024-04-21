@@ -1,0 +1,7 @@
+entorno
+.git
+.vscode
+__pycache__
+*.log
+*.tmp
+
