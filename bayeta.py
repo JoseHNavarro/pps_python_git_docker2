@@ -1,31 +1,21 @@
-# bayeta.py
-
 import random
+from mongo import instanciar, consultar
 
-# Lista de frases (puedes agregar más frases aquí)
-FRASES = [
-    "Esta es la primera frase.",
-    "Otra frase interesante.",
-    "Una tercera frase para la lista.",
-    "Las frases aleatorias son geniales.",
-    "Última frase, ¡prometido!"
-]
+def frotar(n_frases):
+    cliente_mongo, frases_auspiciosas = instanciar()
 
-def frotar(n_frases: int = 1) -> list:
-    """
-    Devuelve una lista con N frases aleatorias de la lista FRASES.
+    
+    frases = []
+    docs = consultar(n_frases, frases_auspiciosas)  # Obtenemos los documentos con frases auspiciosas de la base de datos
+    for doc in docs:
+        frase = doc["frase"]
+        frases.append(frase)
+    respuesta = []
+    for i in range(n_frases):
+        frase = random.choice(frases)
+        respuesta.append(frase)
 
-    Args:
-        n_frases (int): Número de frases a incluir en la lista.
+    
+    cliente_mongo.close()
 
-    Returns:
-        list: Lista con N frases aleatorias.
-    """
-    #frases_elegidas = random.sample(FRASES, n_frases)
-    frases_elegidas = []
-    i=0
-    while(i<n_frases):
-        num_al = random.randint(0, 4) #Número aleatorio entre 0 y 4
-        frases_elegidas.append(FRASES[num_al])
-        i = i+1
-    return frases_elegidas
+    return respuesta  # Devolvemos la respuesta
