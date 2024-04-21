@@ -1,4 +1,5 @@
 # app.py
+from bayeta import frotar
 
 def main():
     print("¡Hola, mundo!")
