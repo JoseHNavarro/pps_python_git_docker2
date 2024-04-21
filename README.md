@@ -33,3 +33,10 @@ Ahora creamos la imagen de la app
 
 Y ya para desplegar un contenedor con la imagen que has creado, ejecuta el comando `docker run -p port:5000 --network nombreRed nombreImagen`
 Asi asocias el contenedor de la imagen que has creado a un puerto y una red que hayas especificado
+
+
+
+COMPOSE
+
+Esta parte ha sido muy ligera. Docker-compose funciona bien. Aqui toma importancia el archivo `compose.yml`. Por lo demás, ahora iniciaremos la app con `docker compose up` y seguimos el mismo protocolo de siempre.
+
